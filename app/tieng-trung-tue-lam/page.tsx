@@ -47,6 +47,29 @@ export default function TiengTrungTueLam() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate__animated");
+            const animationClass = entry.target.getAttribute("data-animation");
+            if (animationClass) {
+              entry.target.classList.add(animationClass);
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    const elements = document.querySelectorAll("[data-animation]");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
