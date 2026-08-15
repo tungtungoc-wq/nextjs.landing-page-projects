@@ -98,6 +98,9 @@ export default function TiengTrungTueLam() {
                     慧林汉语
                   </span>
                 </div>
+                <div className="text-[11px] text-blue-300/80 font-medium tracking-wide">
+                  Huì Lín Hànyǔ
+                </div>
                 <div className="text-sm font-semibold text-white">
                   Tuệ Lâm Hán Ngữ
                 </div>
@@ -204,11 +207,14 @@ export default function TiengTrungTueLam() {
 
           {/* Main Logo & Title */}
           <div className="mb-8 animate__animated animate__fadeInUp">
-            <h1 className="text-6xl md:text-8xl font-bold mb-4">
+            <h1 className="text-6xl md:text-8xl font-bold mb-2">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 animate-gradient">
                 慧林汉语
               </span>
             </h1>
+            <div className="text-xl md:text-2xl text-blue-300/80 font-medium tracking-widest mb-4">
+              Huì Lín Hànyǔ
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-2">
               Tuệ Lâm <span className="text-blue-400">Hán Ngữ</span>
             </h2>
@@ -918,6 +924,9 @@ export default function TiengTrungTueLam() {
                 <div>
                   <div className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                     慧林汉语
+                  </div>
+                  <div className="text-[11px] text-blue-300/70 font-medium tracking-wide">
+                    Huì Lín Hànyǔ
                   </div>
                   <div className="text-sm font-semibold">Tuệ Lâm Hán Ngữ</div>
                 </div>
