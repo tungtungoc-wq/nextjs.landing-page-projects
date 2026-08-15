@@ -262,11 +262,11 @@ export default function TiengTrungTueLam() {
             Nơi ươm mầm ước mơ chinh phục ngôn ngữ Trung Hoa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
-            <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 shadow-2xl">
+            <button className="btn-primary flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl">
               <BookOpen className="w-5 h-5" />
               Đăng Ký Học Thử
             </button>
-            <button className="flex items-center justify-center gap-2 border-2 border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105">
+            <button className="btn-primary flex items-center justify-center gap-2 border-2 border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-full font-bold">
               <Phone className="w-5 h-5" />
               Tư Vấn Ngay
             </button>
@@ -295,17 +295,23 @@ export default function TiengTrungTueLam() {
       </section>
 
       {/* Problem Statement Section */}
-      <section id="problems" className="py-20 bg-slate-800/50">
+      <section id="problems" className="py-20 md:py-24 lg:py-32 bg-slate-800/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate__animated animate__fadeIn">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6"
+              data-animation="animate__fadeInUp"
+            >
               Bạn Đang Gặp <span className="text-red-400">Khó Khăn</span> Gì?
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
+              data-animation="animate__fadeInUp"
+            >
               Chúng tôi hiểu những thách thức mà bạn đang đối mặt khi học tiếng Trung
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: <Target className="w-12 h-12" />,
@@ -340,12 +346,13 @@ export default function TiengTrungTueLam() {
             ].map((problem, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-red-900/30 to-slate-800/30 backdrop-blur-sm p-8 rounded-2xl border border-red-500/20 hover:border-red-500/50 transition-all hover:scale-105 animate__animated animate__fadeInUp"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-hover bg-gradient-to-br from-red-900/30 to-slate-800/30 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-red-500/20"
+                data-animation="animate__fadeInUp"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-red-400 mb-4">{problem.icon}</div>
+                <div className="text-red-400 mb-4 icon-hover inline-block">{problem.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{problem.title}</h3>
-                <p className="text-gray-400">{problem.desc}</p>
+                <p className="text-gray-400 leading-relaxed">{problem.desc}</p>
               </div>
             ))}
           </div>
@@ -421,17 +428,23 @@ export default function TiengTrungTueLam() {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-gradient-to-b from-blue-900/50 to-slate-900/50">
+      <section id="benefits" className="py-20 md:py-24 lg:py-32 bg-gradient-to-b from-blue-900/50 to-slate-900/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate__animated animate__fadeIn">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-16">
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6"
+              data-animation="animate__fadeInUp"
+            >
               Lợi Ích Khi Học Tại <span className="text-blue-400">Tuệ Lâm</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
+              data-animation="animate__fadeInUp"
+            >
               Những gì bạn sẽ đạt được sau khóa học
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-7xl mx-auto">
             {[
               {
                 icon: <Trophy className="w-10 h-10" />,
@@ -484,12 +497,15 @@ export default function TiengTrungTueLam() {
             ].map((benefit, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all hover:scale-105 text-center animate__animated animate__zoomIn"
-                style={{ animationDelay: `${index * 0.05}s` }}
+                className="card-hover bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 text-center"
+                data-animation="animate__fadeInUp"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`${benefit.colorClass} mx-auto mb-4`}>{benefit.icon}</div>
+                <div className={`${benefit.colorClass} mx-auto mb-4 icon-hover inline-block`}>
+                  {benefit.icon}
+                </div>
                 <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                <p className="text-sm text-gray-400">{benefit.desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
