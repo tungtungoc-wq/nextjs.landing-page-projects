@@ -6,9 +6,9 @@ import {
   Code,
   Heart,
   Star,
-  Github,
-  Twitter,
-  Linkedin
+  Share2,
+  MessageCircle,
+  Mail
 } from "lucide-react";
 
 export default function Home() {
@@ -23,13 +23,13 @@ export default function Home() {
           </div>
           <div className="flex gap-4 animate__animated animate__fadeInRight">
             <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-              <Github className="w-6 h-6" />
+              <Share2 className="w-6 h-6" />
             </a>
             <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-              <Twitter className="w-6 h-6" />
+              <MessageCircle className="w-6 h-6" />
             </a>
             <a href="#" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-              <Linkedin className="w-6 h-6" />
+              <Mail className="w-6 h-6" />
             </a>
           </div>
         </nav>

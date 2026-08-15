@@ -364,49 +364,49 @@ export default function TiengTrungTueLam() {
                 icon: <Trophy className="w-10 h-10" />,
                 title: "Đỗ HSK Đảm Bảo",
                 desc: "Cam kết đỗ HSK hoặc học lại miễn phí",
-                color: "blue",
+                colorClass: "text-blue-400",
               },
               {
                 icon: <MessageCircle className="w-10 h-10" />,
                 title: "Giao Tiếp Tự Tin",
                 desc: "Nói tiếng Trung lưu loát như người bản xứ",
-                color: "green",
+                colorClass: "text-green-400",
               },
               {
                 icon: <Globe className="w-10 h-10" />,
                 title: "Cơ Hội Việc Làm",
                 desc: "Mở rộng cơ hội làm việc tại công ty Trung Quốc",
-                color: "purple",
+                colorClass: "text-purple-400",
               },
               {
                 icon: <Users className="w-10 h-10" />,
                 title: "Cộng Đồng Học Tập",
                 desc: "Kết nối với 5000+ học viên khắp cả nước",
-                color: "pink",
+                colorClass: "text-pink-400",
               },
               {
                 icon: <Clock className="w-10 h-10" />,
                 title: "Tiết Kiệm Thời Gian",
                 desc: "Học đúng trọng tâm, tiến bộ nhanh gấp 3 lần",
-                color: "yellow",
+                colorClass: "text-yellow-400",
               },
               {
                 icon: <BookOpen className="w-10 h-10" />,
                 title: "Học Liệu Vĩnh Viễn",
                 desc: "Truy cập tài liệu học tập không giới hạn",
-                color: "red",
+                colorClass: "text-red-400",
               },
               {
                 icon: <Award className="w-10 h-10" />,
                 title: "Chứng Chỉ Uy Tín",
                 desc: "Cấp chứng chỉ hoàn thành khóa học",
-                color: "indigo",
+                colorClass: "text-indigo-400",
               },
               {
                 icon: <Headphones className="w-10 h-10" />,
                 title: "Hỗ Trợ 24/7",
                 desc: "Giảng viên tư vấn và giải đáp mọi lúc",
-                color: "cyan",
+                colorClass: "text-cyan-400",
               },
             ].map((benefit, index) => (
               <div
@@ -414,7 +414,7 @@ export default function TiengTrungTueLam() {
                 className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all hover:scale-105 text-center animate__animated animate__zoomIn"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className={`text-${benefit.color}-400 mx-auto mb-4`}>{benefit.icon}</div>
+                <div className={`${benefit.colorClass} mx-auto mb-4`}>{benefit.icon}</div>
                 <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
                 <p className="text-sm text-gray-400">{benefit.desc}</p>
               </div>
