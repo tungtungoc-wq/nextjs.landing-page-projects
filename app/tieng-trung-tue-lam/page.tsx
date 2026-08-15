@@ -111,12 +111,12 @@ export default function TiengTrungTueLam() {
             </button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium hover:text-blue-400 transition-colors"
+                  className="text-sm font-medium hover:text-blue-400 transition-colors whitespace-nowrap"
                 >
                   {item.label}
                 </button>
@@ -124,24 +124,28 @@ export default function TiengTrungTueLam() {
             </nav>
 
             {/* Desktop CTA Buttons */}
-            <div className="hidden lg:flex items-center gap-4">
-              <button className="flex items-center gap-2 text-sm font-semibold hover:text-blue-400 transition-colors">
+            <div className="hidden md:flex items-center gap-3 lg:gap-4">
+              <a
+                href="tel:0931593386"
+                className="flex items-center gap-2 text-sm font-semibold hover:text-blue-400 transition-colors whitespace-nowrap"
+              >
                 <Phone className="w-4 h-4" />
-                0123 456 789
-              </button>
+                <span className="hidden lg:inline">0931 593 386</span>
+              </a>
               <button
                 onClick={() => scrollToSection("pricing")}
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all hover:scale-105 shadow-lg"
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 lg:px-6 py-2.5 rounded-full font-semibold transition-all hover:scale-105 shadow-lg text-sm"
               >
                 <BookOpen className="w-4 h-4" />
-                Đăng Ký Ngay
+                <span className="hidden lg:inline">Đăng Ký Ngay</span>
+                <span className="lg:hidden">Đăng Ký</span>
               </button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -154,7 +158,7 @@ export default function TiengTrungTueLam() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-slate-900/98 backdrop-blur-md border-t border-slate-800 animate__animated animate__fadeInDown animate__faster">
+          <div className="md:hidden bg-slate-900/98 backdrop-blur-md border-t border-slate-800 animate__animated animate__fadeInDown animate__faster">
             <div className="container mx-auto px-4 py-6">
               <nav className="flex flex-col gap-4">
                 {navItems.map((item) => (
@@ -169,7 +173,7 @@ export default function TiengTrungTueLam() {
                 <div className="flex flex-col gap-3 pt-4 border-t border-slate-800">
                   <button className="flex items-center justify-center gap-2 text-sm font-semibold py-3 px-4 hover:bg-white/5 rounded-lg transition-colors">
                     <Phone className="w-4 h-4" />
-                    0123 456 789
+                    0931 593 386
                   </button>
                   <button
                     onClick={() => scrollToSection("pricing")}
@@ -202,7 +206,7 @@ export default function TiengTrungTueLam() {
         />
         <div className="container mx-auto px-4 z-10 text-center animate__animated animate__fadeIn">
           <div className="inline-block mb-6 px-6 py-2 bg-blue-600/80 backdrop-blur-sm rounded-full animate__animated animate__bounceIn">
-            <span className="text-sm font-semibold">🇨🇳 Học Tiếng Trung Chuẩn Quốc Tế</span>
+            <span className="text-sm font-semibold">Học Tiếng Trung Chuẩn Quốc Tế</span>
           </div>
 
           {/* Main Logo & Title */}
@@ -810,7 +814,7 @@ export default function TiengTrungTueLam() {
               </button>
               <button className="flex items-center justify-center gap-2 border-2 border-white hover:bg-white hover:text-blue-900 text-white px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-110">
                 <Phone className="w-6 h-6" />
-                0123 456 789
+                0931 593 386
               </button>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
@@ -1010,15 +1014,19 @@ export default function TiengTrungTueLam() {
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
                   <MapPin className="w-5 h-5 flex-shrink-0 text-blue-400" />
-                  <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                  <span>Chung Cư THT New City, Lai Xá, Hoài Đức, Hà Nội</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone className="w-5 h-5 text-blue-400" />
-                  <span>0123 456 789</span>
+                  <a href="tel:0931593386" className="hover:text-blue-400 transition-colors">
+                    0931 593 386
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-5 h-5 text-blue-400" />
-                  <span>info@tiengtrungtu elam.vn</span>
+                  <a href="mailto:infor@tiengtrungtuelam.vn" className="hover:text-blue-400 transition-colors">
+                    infor@tiengtrungtuelam.vn
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Clock className="w-5 h-5 text-blue-400" />
