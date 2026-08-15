@@ -79,12 +79,31 @@ export default function TiengTrungTueLam() {
             {/* Logo */}
             <button
               onClick={() => scrollToSection("hero")}
-              className="flex items-center gap-2 hover:scale-105 transition-transform"
+              className="flex items-center gap-3 hover:scale-105 transition-transform group"
             >
-              <GraduationCap className="w-8 h-8 text-blue-400" />
+              {/* Logo Icon with Chinese Characters */}
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-all">
+                  <span className="text-white font-bold text-lg">慧林</span>
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center text-[8px] font-bold border-2 border-slate-900">
+                  中
+                </div>
+              </div>
+
+              {/* Text Logo */}
               <div className="text-left">
-                <div className="text-xl font-bold">Tiếng Trung Tuệ Lâm</div>
-                <div className="text-xs text-gray-400">Since 2014</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    慧林汉语
+                  </span>
+                </div>
+                <div className="text-sm font-semibold text-white">
+                  Tuệ Lâm Hán Ngữ
+                </div>
+                <div className="text-[10px] text-gray-400 font-medium">
+                  Since 2014 • HSK Excellence
+                </div>
               </div>
             </button>
 
@@ -182,9 +201,30 @@ export default function TiengTrungTueLam() {
           <div className="inline-block mb-6 px-6 py-2 bg-blue-600/80 backdrop-blur-sm rounded-full animate__animated animate__bounceIn">
             <span className="text-sm font-semibold">🇨🇳 Học Tiếng Trung Chuẩn Quốc Tế</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate__animated animate__fadeInUp">
-            Tiếng Trung <span className="text-blue-400">Tuệ Lâm</span>
-          </h1>
+
+          {/* Main Logo & Title */}
+          <div className="mb-8 animate__animated animate__fadeInUp">
+            <h1 className="text-6xl md:text-8xl font-bold mb-4">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 animate-gradient">
+                慧林汉语
+              </span>
+            </h1>
+            <h2 className="text-4xl md:text-5xl font-bold mb-2">
+              Tuệ Lâm <span className="text-blue-400">Hán Ngữ</span>
+            </h2>
+            <div className="flex items-center justify-center gap-3 text-sm text-gray-400 mt-4">
+              <span className="flex items-center gap-1">
+                <Award className="w-4 h-4 text-yellow-400" />
+                <span>Since 2014</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Trophy className="w-4 h-4 text-yellow-400" />
+                <span>98% Tỷ Lệ Đỗ HSK</span>
+              </span>
+            </div>
+          </div>
+
           <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
             Nơi ươm mầm ước mơ chinh phục ngôn ngữ Trung Hoa
           </p>
@@ -871,9 +911,16 @@ export default function TiengTrungTueLam() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <GraduationCap className="w-8 h-8 text-blue-400" />
-                <span className="text-xl font-bold">Tiếng Trung Tuệ Lâm</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">慧林</span>
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    慧林汉语
+                  </div>
+                  <div className="text-sm font-semibold">Tuệ Lâm Hán Ngữ</div>
+                </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 Trung tâm đào tạo tiếng Trung uy tín, chất lượng hàng đầu Việt Nam
