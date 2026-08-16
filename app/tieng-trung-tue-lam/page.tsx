@@ -676,7 +676,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Nguyễn Văn An",
                 role: "Nhân viên kinh doanh",
-                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&q=80&fit=crop&crop=faces",
                 rating: 5,
                 comment:
                   "Tôi đã đỗ HSK 4 sau 8 tháng học tại Tuệ Lâm. Giảng viên nhiệt tình, phương pháp giảng dạy dễ hiểu. Giờ tôi tự tin giao tiếp với đối tác Trung Quốc.",
@@ -684,7 +684,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Trần Thị Bích",
                 role: "Quản lý nhà máy",
-                image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&fit=crop&crop=faces",
                 rating: 5,
                 comment:
                   "Khóa tiếng Trung công xưởng rất thực tế, giúp tôi giao tiếp tốt với công nhân. Lương tăng gấp đôi sau khi biết tiếng Trung.",
@@ -692,7 +692,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Lê Hoàng Nam",
                 role: "Sinh viên",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&q=80&fit=crop&crop=faces",
                 rating: 5,
                 comment:
                   "Lớp học vui, không gò bó. Thầy cô luôn động viên và hỗ trợ tận tình. Tôi đã đậu học bổng du học Trung Quốc nhờ chứng chỉ HSK 5.",
