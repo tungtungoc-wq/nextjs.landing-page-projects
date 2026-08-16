@@ -31,6 +31,8 @@ export default function TiengTrungTueLam() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,6 +40,7 @@ export default function TiengTrungTueLam() {
     level: "",
     course: "",
     message: "",
+    registration_type: "full", // 'trial' or 'full'
   });
 
   const toggleFAQ = (index: number) => {
@@ -48,7 +51,11 @@ export default function TiengTrungTueLam() {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const openRegisterModal = () => {
+  const openRegisterModal = (type: 'trial' | 'full' = 'full') => {
+    setFormData(prev => ({
+      ...prev,
+      registration_type: type,
+    }));
     setShowRegisterModal(true);
     document.body.style.overflow = "hidden"; // Prevent scroll
   };
@@ -65,21 +72,57 @@ export default function TiengTrungTueLam() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Send to backend/email
-    console.log("Form submitted:", formData);
-    alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.");
-    closeRegisterModal();
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      level: "",
-      course: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: result.message || 'Đăng ký thành công! Chúng tôi sẽ liên hệ sớm nhất.'
+        });
+
+        // Reset form after 2 seconds
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            level: "",
+            course: "",
+            message: "",
+            registration_type: "full",
+          });
+          closeRegisterModal();
+          setSubmitStatus(null);
+        }, 2000);
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Có lỗi xảy ra. Vui lòng thử lại!'
+        });
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Không thể kết nối đến server. Vui lòng thử lại!'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -317,11 +360,11 @@ export default function TiengTrungTueLam() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
             <button
-              onClick={openRegisterModal}
-              className="btn-primary flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl"
+              onClick={() => openRegisterModal('trial')}
+              className="btn-primary flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl"
             >
               <BookOpen className="w-5 h-5" />
-              Đăng Ký Học Thử
+              Đăng Ký Học Thử Miễn Phí
             </button>
             <a
               href="tel:0931593386"
@@ -862,13 +905,14 @@ export default function TiengTrungTueLam() {
                   ))}
                 </ul>
                 <button
+                  onClick={() => openRegisterModal('full')}
                   className={`w-full flex items-center justify-center gap-2 ${
                     plan.popular
                       ? "bg-blue-600 hover:bg-blue-700"
                       : "bg-slate-600 hover:bg-slate-700"
                   } text-white px-6 py-3 rounded-full font-semibold transition-all`}
                 >
-                  Đăng Ký Ngay
+                  Đăng Ký Khóa Học
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -1297,9 +1341,10 @@ export default function TiengTrungTueLam() {
                   >
                     <option value="">Chọn trình độ</option>
                     <option value="zero">Chưa biết gì</option>
-                    <option value="beginner">Sơ cấp (A1-A2)</option>
-                    <option value="intermediate">Trung cấp (B1-B2)</option>
-                    <option value="advanced">Nâng cao (C1-C2)</option>
+                    <option value="hsk1-2">HSK 1-2 (Sơ cấp)</option>
+                    <option value="hsk3-4">HSK 3-4 (Trung cấp)</option>
+                    <option value="hsk5-6">HSK 5-6 (Nâng cao)</option>
+                    <option value="hsk7-9">HSK 7-9 (Thành thạo)</option>
                   </select>
                 </div>
 
@@ -1339,19 +1384,54 @@ export default function TiengTrungTueLam() {
                 ></textarea>
               </div>
 
+              {/* Status Message */}
+              {submitStatus && (
+                <div
+                  className={`p-4 rounded-lg animate__animated animate__fadeIn ${
+                    submitStatus.type === 'success'
+                      ? 'bg-green-500/20 border border-green-500/50 text-green-300'
+                      : 'bg-red-500/20 border border-red-500/50 text-red-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {submitStatus.type === 'success' ? (
+                      <CheckCircle className="w-5 h-5" />
+                    ) : (
+                      <X className="w-5 h-5" />
+                    )}
+                    <p className="font-medium">{submitStatus.message}</p>
+                  </div>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="btn-primary flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-full font-bold shadow-lg"
+                  disabled={isSubmitting}
+                  className={`btn-primary flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-full font-bold shadow-lg ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
                 >
-                  <BookOpen className="w-5 h-5" />
-                  Đăng Ký Ngay
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Đang xử lý...
+                    </>
+                  ) : (
+                    <>
+                      <BookOpen className="w-5 h-5" />
+                      Đăng Ký Ngay
+                    </>
+                  )}
                 </button>
                 <button
                   type="button"
                   onClick={closeRegisterModal}
-                  className="sm:w-auto px-6 py-4 border-2 border-slate-600 hover:border-slate-500 text-gray-300 rounded-full font-semibold transition-all"
+                  disabled={isSubmitting}
+                  className={`sm:w-auto px-6 py-4 border-2 border-slate-600 hover:border-slate-500 text-gray-300 rounded-full font-semibold transition-all ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
                 >
                   Hủy
                 </button>

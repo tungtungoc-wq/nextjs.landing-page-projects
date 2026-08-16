@@ -1,144 +1,304 @@
-# Next.js Landing Page Project
+# 🎓 Tiếng Trung Tuệ Lâm - Landing Page & Registration System
 
-Dự án Next.js landing page được xây dựng với các công nghệ hiện đại và hỗ trợ đầy đủ tiếng Việt.
+Full-stack Next.js landing page với hệ thống đăng ký học viên tự động.
 
-## Công nghệ sử dụng
+## ✨ Features
 
-- **Next.js 15** - Framework React với App Router và Server Components
-- **TypeScript** - Hỗ trợ type-safe
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide Icons** - Bộ icon đẹp mắt với hơn 1000+ icons
-- **Animate.css** - Thư viện animation CSS
-- **Google Fonts** - Inter và Roboto Mono với hỗ trợ tiếng Việt
+### 🎨 Frontend
+- ✅ Landing page chuyên nghiệp với 10 sections
+- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ Smooth scroll animations với Intersection Observer
+- ✅ Hover effects (300ms transitions)
+- ✅ Modal form đăng ký với validation
+- ✅ Loading states & success/error messages
+- ✅ Custom SVG logo với chữ Hán
+- ✅ Floating Zalo chat button
+- ✅ Real testimonial images
 
-## Cài đặt
+### ⚙️ Backend
+- ✅ REST API endpoint (`/api/register`)
+- ✅ Form validation (email, phone, required fields)
+- ✅ SQLite database để lưu registrations
+- ✅ Dual email service (Resend + Gmail fallback)
+- ✅ Beautiful HTML email templates
+- ✅ Error handling & logging
 
-Dự án đã được khởi tạo sẵn với tất cả dependencies. Để chạy dự án:
+### 📊 Admin Dashboard
+- ✅ Admin panel tại `/admin/registrations`
+- ✅ Password protection (Basic Auth)
+- ✅ Statistics cards (today, week, month, total)
+- ✅ View all registrations
+- ✅ Delete registrations
+- ✅ Export to CSV
+- ✅ Real-time refresh
 
+## 🚀 Quick Start
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Start Development Server
 ```bash
 npm run dev
 ```
 
-Mở trình duyệt và truy cập [http://localhost:3000](http://localhost:3000)
+### 3. Open Pages
+- **Landing Page**: http://localhost:3000/tieng-trung-tue-lam
+- **Admin Dashboard**: http://localhost:3000/admin/registrations
 
-## Scripts
+### 4. Test Registration
+1. Click "Đăng Ký Ngay" button
+2. Fill out form
+3. Submit → Data saved to SQLite database!
+4. View registrations in Admin Dashboard (password: `admin123`)
 
-- `npm run dev` - Chạy development server
-- `npm run build` - Build production
-- `npm start` - Chạy production server
-- `npm run lint` - Kiểm tra code với ESLint
+## 📧 Email Setup (Optional)
 
-## Sử dụng Lucide Icons
+Đã có **3 options** để gửi email:
 
-```tsx
-import { Heart, Star, Rocket } from "lucide-react";
+### Option 1: Không cần setup gì (Mặc định) ✅
+- ✅ Registrations vẫn được lưu vào database
+- ✅ Xem được trong Admin Dashboard
+- ✅ Export CSV
+- ❌ Không gửi email tự động
 
-export default function Component() {
-  return (
-    <div>
-      <Heart className="w-6 h-6 text-red-500" />
-      <Star className="w-6 h-6 text-yellow-500" />
-      <Rocket className="w-6 h-6 text-blue-500" />
-    </div>
-  );
-}
+### Option 2: Resend (Recommended)
+```env
+RESEND_API_KEY=re_your_key_here
+```
+- 100 emails/ngày miễn phí
+- Hướng dẫn: [SETUP_EMAIL.md](SETUP_EMAIL.md)
+
+### Option 3: Gmail SMTP (Fallback)
+```env
+GMAIL_USER=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-16-char-app-password
+```
+- Unlimited emails
+- Guide: https://support.google.com/accounts/answer/185833
+
+## 🔐 Admin Dashboard
+
+### Access
+URL: http://localhost:3000/admin/registrations
+
+### Default Password
+```
+admin123
 ```
 
-## Sử dụng Animate.css
-
-```tsx
-<div className="animate__animated animate__fadeIn">
-  Nội dung với hiệu ứng fade in
-</div>
-
-<div className="animate__animated animate__bounce">
-  Nội dung với hiệu ứng bounce
-</div>
+### Change Password
+Edit `.env.local`:
+```env
+ADMIN_PASSWORD=your_secure_password_here
 ```
 
-Xem thêm các hiệu ứng tại: [Animate.css Documentation](https://animate.style/)
+### Features
+- 📊 Statistics dashboard (total, today, week, month)
+- 📋 View all registrations in table
+- 🗑️ Delete individual registrations
+- 📥 Export all data to CSV
+- 🔄 Real-time refresh
+- 📱 Responsive design
 
-## Tailwind CSS
-
-Dự án sử dụng Tailwind CSS v4 (PostCSS plugin). Cấu hình đã được tối ưu với:
-- Dark mode support
-- Custom color variables
-- Font family variables
-- Responsive design
-
-## Google Fonts
-
-Dự án sử dụng:
-- **Inter** - Font chính (sans-serif) với hỗ trợ Latin và Vietnamese
-- **Roboto Mono** - Font monospace với hỗ trợ Latin và Vietnamese
-
-Fonts được tối ưu tự động bởi Next.js với `font-display: swap`.
-
-## Cấu trúc thư mục
+## 📂 Project Structure
 
 ```
-nextjs.landing-page-projects/
+.
 ├── app/
-│   ├── layout.tsx          # Root layout với font và metadata
-│   ├── page.tsx            # Trang chủ
-│   └── globals.css         # Global styles và Tailwind
-├── public/                 # Static assets
-├── node_modules/
-├── package.json
-└── README.md
+│   ├── tieng-trung-tue-lam/
+│   │   ├── page.tsx              # Landing page
+│   │   └── layout.tsx            # Be Vietnam Pro font
+│   ├── admin/
+│   │   └── registrations/
+│   │       └── page.tsx          # Admin dashboard
+│   └── api/
+│       ├── register/
+│       │   └── route.ts          # Registration API
+│       └── admin/
+│           └── registrations/
+│               └── route.ts      # Admin API
+├── lib/
+│   └── db.ts                     # SQLite database utilities
+├── data/
+│   └── registrations.db          # SQLite database (auto-created)
+├── public/
+│   └── images/
+│       └── testimonials/         # Student photos
+├── .env.local                    # Environment variables
+└── README.md                     # This file
 ```
 
-## Tùy chỉnh
+## 🗄️ Database Schema
 
-### Thay đổi màu sắc
+**Table**: `registrations`
 
-Chỉnh sửa file `app/globals.css`:
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INTEGER | Primary key (auto-increment) |
+| name | TEXT | Họ và tên |
+| email | TEXT | Email address |
+| phone | TEXT | Số điện thoại |
+| level | TEXT | Trình độ (optional) |
+| course | TEXT | Khóa học quan tâm (optional) |
+| message | TEXT | Ghi chú (optional) |
+| created_at | DATETIME | Timestamp |
+| ip_address | TEXT | IP của người đăng ký |
+| user_agent | TEXT | Browser info |
 
-```css
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16.3.1 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4, Animate.css
+- **Database**: SQLite (better-sqlite3)
+- **Email**: Resend, Nodemailer
+- **Icons**: Lucide React
+- **Fonts**: Be Vietnam Pro (Google Fonts)
+
+## 📊 API Endpoints
+
+### POST `/api/register`
+Tạo registration mới
+
+**Request Body**:
+```json
+{
+  "name": "Nguyễn Văn A",
+  "email": "email@example.com",
+  "phone": "0931593386",
+  "level": "beginner",
+  "course": "hsk",
+  "message": "Muốn tư vấn về HSK"
 }
 ```
 
-### Thay đổi font
-
-Chỉnh sửa file `app/layout.tsx`:
-
-```tsx
-import { Roboto, JetBrains_Mono } from "next/font/google";
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin", "vietnamese"],
-  weight: ["400", "700"],
-  display: "swap",
-});
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Đăng ký thành công!",
+  "data": {
+    "id": 1,
+    "name": "Nguyễn Văn A",
+    "email": "email@example.com",
+    "phone": "0931593386"
+  }
+}
 ```
 
-## Deploy
+### GET `/api/admin/registrations`
+Lấy danh sách registrations (requires auth)
 
-### Vercel (Khuyến nghị)
-
-```bash
-npm install -g vercel
-vercel
+**Headers**:
+```
+Authorization: Basic base64(:password)
 ```
 
-### Build thủ công
+**Query Params**:
+- `action=stats` - Get statistics
+- `limit=10` - Get recent N registrations
 
-```bash
-npm run build
-npm start
+### DELETE `/api/admin/registrations?id=1`
+Xóa registration (requires auth)
+
+## 🧪 Testing
+
+Test checklist: [TESTING.md](TESTING.md)
+
+### Quick Test
+
+1. **Test Landing Page**
+   ```
+   http://localhost:3000/tieng-trung-tue-lam
+   ```
+
+2. **Test Registration Form**
+   - Click "Đăng Ký Ngay"
+   - Fill: Name, Email, Phone
+   - Submit → Should see success message
+
+3. **Check Database**
+   ```
+   http://localhost:3000/admin/registrations
+   Password: admin123
+   ```
+   Should see your registration!
+
+4. **Export CSV**
+   - Click "Xuất CSV" button
+   - Open downloaded file
+   - Should see your data
+
+## 🌐 Deployment
+
+### Vercel (Recommended)
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   vercel
+   ```
+
+3. **Add Environment Variables** in Vercel Dashboard:
+   ```
+   ADMIN_PASSWORD=your_secure_password
+   ADMIN_EMAIL=infor@tiengtrungtuelam.vn
+   ```
+
+4. **Note**: SQLite won't persist on Vercel (use PostgreSQL/MongoDB for production)
+
+## 📝 Environment Variables
+
+Copy `.env.local` and customize:
+
+```env
+# Email Service (optional - choose one)
+RESEND_API_KEY=re_your_key_here           # Option 1: Resend
+GMAIL_USER=your@gmail.com                  # Option 2: Gmail
+GMAIL_APP_PASSWORD=16-char-password        # Option 2: Gmail
+
+# General
+ADMIN_EMAIL=infor@tiengtrungtuelam.vn     # Where to send notifications
+FROM_EMAIL=onboarding@resend.dev          # From address
+ADMIN_PASSWORD=admin123                    # Admin dashboard password (CHANGE THIS!)
 ```
 
-## Tài nguyên học tập
+## 🐛 Troubleshooting
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Lucide Icons](https://lucide.dev/)
-- [Animate.css](https://animate.style/)
+### Registration form not working?
+- Check console for errors
+- Verify API route: http://localhost:3000/api/register
+- Check database exists: `data/registrations.db`
 
-## License
+### Admin dashboard shows empty?
+- Submit a test registration first
+- Check password: `admin123`
+- Verify database has data
 
-MIT
+### Email not sending?
+- ✅ It's OK! Registrations are still saved
+- Add Resend or Gmail credentials to `.env.local`
+- Restart server after adding env variables
+
+### Database locked error?
+- Close SQLite browser/editor
+- Restart dev server
+
+## 📞 Contact
+
+**Tiếng Trung Tuệ Lâm**
+- 📍 Chung Cư THT New City, Lai Xá, Hoài Đức, Hà Nội
+- 📞 0931593386
+- 📧 infor@tiengtrungtuelam.vn
+- 💬 Zalo: https://zalo.me/0931593386
+
+---
+
+Made with ❤️ using Next.js & Claude Code
