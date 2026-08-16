@@ -1111,23 +1111,36 @@ export default function TiengTrungTueLam() {
           <span className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-75"></span>
 
           {/* Main button */}
-          <div className="relative btn-primary bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center gap-3">
-            {/* Zalo Icon */}
+          <div className="relative btn-primary bg-white hover:bg-gray-50 p-2 rounded-2xl shadow-2xl flex items-center gap-3">
+            {/* Zalo Icon - Official Style */}
             <svg
-              width="32"
-              height="32"
+              width="56"
+              height="56"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="flex-shrink-0"
             >
-              <circle cx="24" cy="24" r="20" fill="white"/>
-              <path d="M24 8C15.163 8 8 14.388 8 22.222c0 4.446 2.347 8.44 6.027 11.11-.234 2.445-1.234 5.556-2.027 7.222 3.2-1.778 6.934-4.111 8.4-5.111C21.573 35.778 22.774 36 24 36c8.837 0 16-6.388 16-14.222C40 14.388 32.837 8 24 8z" fill="#0068FF"/>
-              <path d="M19.5 20.5h-3c-.276 0-.5.224-.5.5v7c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5v-7c0-.276-.224-.5-.5-.5zm12 0h-3c-.276 0-.5.224-.5.5v4.5l-3-5.5h-3c-.276 0-.5.224-.5.5v7c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5V23l3 5.5h3c.276 0 .5-.224.5-.5v-7c0-.276-.224-.5-.5-.5z" fill="white"/>
+              {/* Background gradient */}
+              <defs>
+                <linearGradient id="zaloGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#0068FF"/>
+                  <stop offset="100%" stopColor="#0095FF"/>
+                </linearGradient>
+              </defs>
+
+              {/* Rounded square background */}
+              <rect x="2" y="2" width="44" height="44" rx="10" fill="url(#zaloGradient)"/>
+
+              {/* Chat bubble */}
+              <path d="M14 18c0-2.2 1.8-4 4-4h12c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-8l-6 4v-4h-2c-2.2 0-4-1.8-4-4v-8z" fill="white"/>
+
+              {/* "Zalo" text */}
+              <text x="24" y="26" fontFamily="Arial, sans-serif" fontSize="8" fontWeight="bold" fill="#0068FF" textAnchor="middle">Zalo</text>
             </svg>
 
             {/* Text (hidden on mobile, shown on hover desktop) */}
-            <span className="hidden md:group-hover:inline-block whitespace-nowrap font-semibold">
+            <span className="hidden md:group-hover:inline-block whitespace-nowrap font-bold text-blue-600">
               Chat Zalo tư vấn
             </span>
           </div>
