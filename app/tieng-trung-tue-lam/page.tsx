@@ -102,35 +102,46 @@ export default function TiengTrungTueLam() {
             {/* Logo */}
             <button
               onClick={() => scrollToSection("hero")}
-              className="flex items-center gap-3 hover:scale-105 transition-transform group"
+              className="flex items-center gap-2 hover:scale-105 transition-transform group"
             >
-              {/* Logo Icon with Chinese Characters */}
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 transition-all">
-                  <span className="text-white font-bold text-lg">慧林</span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center text-[8px] font-bold border-2 border-slate-900">
-                  中
-                </div>
-              </div>
+              {/* SVG Logo */}
+              <svg
+                width="170"
+                height="65"
+                viewBox="0 0 680 260"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 md:h-14 w-auto"
+              >
+                <title>Logo Tuệ Lâm phong cách chữ thảo, tông xanh lục bảo, huy hiệu 慧林</title>
 
-              {/* Text Logo */}
-              <div className="text-left">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    慧林汉语
-                  </span>
-                </div>
-                <div className="text-[11px] text-blue-300/80 font-medium tracking-wide">
-                  Huì Lín Hànyǔ
-                </div>
-                <div className="text-sm font-semibold text-white">
-                  Tuệ Lâm Hán Ngữ
-                </div>
-                <div className="text-[10px] text-gray-400 font-medium">
-                  Since 2014 • HSK Excellence
-                </div>
-              </div>
+                {/* Shadow */}
+                <g transform="translate(6,8)" opacity="0.18">
+                  <path d="M40 150 Q70 90 120 100 Q100 130 130 140 Q95 145 90 175 Q60 165 40 150Z" fill="#1a1a1a"/>
+                  <path d="M75 130 Q110 75 165 95 Q140 120 160 130 Q130 138 122 165 Q95 150 75 130Z" fill="#1a1a1a"/>
+                  <text x="330" y="165" fontFamily="'Segoe Script','Brush Script MT',cursive" fontSize="86" fontStyle="italic" fill="#1a1a1a" textAnchor="middle">Tuệ Lâm</text>
+                  <circle cx="598" cy="140" r="46" fill="#1a1a1a"/>
+                </g>
+
+                {/* Main elements */}
+                <g fill="#046a52" stroke="#ffffff" strokeWidth="5" strokeLinejoin="round">
+                  <path d="M35 145 Q65 82 118 95 Q96 126 128 136 Q92 142 86 172 Q56 160 35 145Z"/>
+                  <path d="M70 122 Q108 65 162 88 Q136 114 158 124 Q127 132 118 160 Q92 145 70 122Z"/>
+                </g>
+                <path d="M158 128 Q195 118 225 128" fill="none" stroke="#ffffff" strokeWidth="7" strokeLinecap="round"/>
+                <path d="M158 128 Q195 118 225 128" fill="none" stroke="#046a52" strokeWidth="4" strokeLinecap="round"/>
+
+                {/* Text "Tuệ Lâm" */}
+                <text x="330" y="160" fontFamily="'Segoe Script','Brush Script MT',cursive" fontSize="86" fontStyle="italic" fill="#046a52" textAnchor="middle" stroke="#ffffff" strokeWidth="6" paintOrder="stroke fill" strokeLinejoin="round">Tuệ Lâm</text>
+
+                {/* Decorative line */}
+                <path d="M502 150 Q528 158 553 150" fill="none" stroke="#ffffff" strokeWidth="7" strokeLinecap="round"/>
+                <path d="M502 150 Q528 158 553 150" fill="none" stroke="#046a52" strokeWidth="4" strokeLinecap="round"/>
+
+                {/* Badge with Chinese characters */}
+                <circle cx="598" cy="132" r="46" fill="#046a52" stroke="#ffffff" strokeWidth="5"/>
+                <text x="598" y="122" textAnchor="middle" fontFamily="'Noto Serif SC','Songti SC',serif" fontSize="34" fill="#ffffff" fontWeight="500">慧</text>
+                <text x="598" y="154" textAnchor="middle" fontFamily="'Noto Serif SC','Songti SC',serif" fontSize="34" fill="#ffffff" fontWeight="500">林</text>
+              </svg>
             </button>
 
             {/* Desktop Navigation */}
@@ -665,7 +676,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Nguyễn Văn An",
                 role: "Nhân viên kinh doanh",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80",
                 rating: 5,
                 comment:
                   "Tôi đã đỗ HSK 4 sau 8 tháng học tại Tuệ Lâm. Giảng viên nhiệt tình, phương pháp giảng dạy dễ hiểu. Giờ tôi tự tin giao tiếp với đối tác Trung Quốc.",
@@ -673,7 +684,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Trần Thị Bích",
                 role: "Quản lý nhà máy",
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&q=80",
                 rating: 5,
                 comment:
                   "Khóa tiếng Trung công xưởng rất thực tế, giúp tôi giao tiếp tốt với công nhân. Lương tăng gấp đôi sau khi biết tiếng Trung.",
@@ -681,7 +692,7 @@ export default function TiengTrungTueLam() {
               {
                 name: "Lê Hoàng Nam",
                 role: "Sinh viên",
-                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
                 rating: 5,
                 comment:
                   "Lớp học vui, không gò bó. Thầy cô luôn động viên và hỗ trợ tận tình. Tôi đã đậu học bổng du học Trung Quốc nhờ chứng chỉ HSK 5.",
@@ -689,8 +700,9 @@ export default function TiengTrungTueLam() {
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all hover:scale-105 animate__animated animate__fadeInUp"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-hover bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10"
+                data-animation="animate__fadeInUp"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <img
@@ -1085,6 +1097,42 @@ export default function TiengTrungTueLam() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Zalo Chat Button */}
+      <a
+        href="https://zalo.me/0931593386"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 group"
+        aria-label="Chat Zalo tư vấn"
+      >
+        <div className="relative">
+          {/* Ping animation */}
+          <span className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-75"></span>
+
+          {/* Main button */}
+          <div className="relative btn-primary bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-4 rounded-full shadow-2xl flex items-center gap-3">
+            {/* Zalo Icon */}
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              <circle cx="24" cy="24" r="20" fill="white"/>
+              <path d="M24 8C15.163 8 8 14.388 8 22.222c0 4.446 2.347 8.44 6.027 11.11-.234 2.445-1.234 5.556-2.027 7.222 3.2-1.778 6.934-4.111 8.4-5.111C21.573 35.778 22.774 36 24 36c8.837 0 16-6.388 16-14.222C40 14.388 32.837 8 24 8z" fill="#0068FF"/>
+              <path d="M19.5 20.5h-3c-.276 0-.5.224-.5.5v7c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5v-7c0-.276-.224-.5-.5-.5zm12 0h-3c-.276 0-.5.224-.5.5v4.5l-3-5.5h-3c-.276 0-.5.224-.5.5v7c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5V23l3 5.5h3c.276 0 .5-.224.5-.5v-7c0-.276-.224-.5-.5-.5z" fill="white"/>
+            </svg>
+
+            {/* Text (hidden on mobile, shown on hover desktop) */}
+            <span className="hidden md:group-hover:inline-block whitespace-nowrap font-semibold">
+              Chat Zalo tư vấn
+            </span>
+          </div>
+        </div>
+      </a>
     </div>
   );
 }
