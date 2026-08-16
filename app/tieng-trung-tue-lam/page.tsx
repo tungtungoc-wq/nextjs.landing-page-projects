@@ -30,6 +30,15 @@ export default function TiengTrungTueLam() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    level: "",
+    course: "",
+    message: "",
+  });
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
@@ -37,6 +46,40 @@ export default function TiengTrungTueLam() {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const openRegisterModal = () => {
+    setShowRegisterModal(true);
+    document.body.style.overflow = "hidden"; // Prevent scroll
+  };
+
+  const closeRegisterModal = () => {
+    setShowRegisterModal(false);
+    document.body.style.overflow = "unset";
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Send to backend/email
+    console.log("Form submitted:", formData);
+    alert("Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ sớm nhất.");
+    closeRegisterModal();
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      level: "",
+      course: "",
+      message: "",
+    });
   };
 
   useEffect(() => {
@@ -273,14 +316,20 @@ export default function TiengTrungTueLam() {
             Nơi ươm mầm ước mơ chinh phục ngôn ngữ Trung Hoa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
-            <button className="btn-primary flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl">
+            <button
+              onClick={openRegisterModal}
+              className="btn-primary flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold shadow-2xl"
+            >
               <BookOpen className="w-5 h-5" />
               Đăng Ký Học Thử
             </button>
-            <button className="btn-primary flex items-center justify-center gap-2 border-2 border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-full font-bold">
+            <a
+              href="tel:0931593386"
+              className="btn-primary flex items-center justify-center gap-2 border-2 border-white hover:bg-white hover:text-blue-900 text-white px-8 py-4 rounded-full font-bold"
+            >
               <Phone className="w-5 h-5" />
               Tư Vấn Ngay
-            </button>
+            </a>
           </div>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
@@ -1146,6 +1195,177 @@ export default function TiengTrungTueLam() {
           </div>
         </div>
       </a>
+
+      {/* Registration Modal */}
+      {showRegisterModal && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate__animated animate__fadeIn animate__faster">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={closeRegisterModal}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate__animated animate__zoomIn animate__faster">
+            {/* Close Button */}
+            <button
+              onClick={closeRegisterModal}
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+              aria-label="Đóng"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 rounded-t-2xl">
+              <GraduationCap className="w-12 h-12 text-white mb-4" />
+              <h2 className="text-3xl font-bold text-white mb-2">
+                Đăng Ký Học Thử Miễn Phí
+              </h2>
+              <p className="text-blue-100">
+                Điền thông tin để nhận tư vấn và học thử miễn phí ngay hôm nay!
+              </p>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="p-8 space-y-6">
+              {/* Họ và Tên */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2">
+                  Họ và Tên <span className="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder="Nguyễn Văn A"
+                />
+              </div>
+
+              {/* Email & Phone */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
+                    Email <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-2">
+                    Số điện thoại <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                    pattern="[0-9]{10,11}"
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="0931 593 386"
+                  />
+                </div>
+              </div>
+
+              {/* Trình độ & Khóa học */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="level" className="block text-sm font-semibold text-gray-300 mb-2">
+                    Trình độ hiện tại
+                  </label>
+                  <select
+                    id="level"
+                    name="level"
+                    value={formData.level}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  >
+                    <option value="">Chọn trình độ</option>
+                    <option value="zero">Chưa biết gì</option>
+                    <option value="beginner">Sơ cấp (A1-A2)</option>
+                    <option value="intermediate">Trung cấp (B1-B2)</option>
+                    <option value="advanced">Nâng cao (C1-C2)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="course" className="block text-sm font-semibold text-gray-300 mb-2">
+                    Khóa học quan tâm
+                  </label>
+                  <select
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  >
+                    <option value="">Chọn khóa học</option>
+                    <option value="hsk">HSK 1-6</option>
+                    <option value="communication">Tiếng Trung Giao Tiếp</option>
+                    <option value="business">Tiếng Trung Thương Mại</option>
+                    <option value="factory">Tiếng Trung Công Xưởng</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Ghi chú */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
+                  Ghi chú (tùy chọn)
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={3}
+                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  placeholder="Bạn có câu hỏi gì muốn tư vấn?"
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="submit"
+                  className="btn-primary flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-full font-bold shadow-lg"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Đăng Ký Ngay
+                </button>
+                <button
+                  type="button"
+                  onClick={closeRegisterModal}
+                  className="sm:w-auto px-6 py-4 border-2 border-slate-600 hover:border-slate-500 text-gray-300 rounded-full font-semibold transition-all"
+                >
+                  Hủy
+                </button>
+              </div>
+
+              {/* Note */}
+              <p className="text-sm text-gray-400 text-center">
+                <CheckCircle className="w-4 h-4 inline mr-1 text-green-400" />
+                Hoàn toàn miễn phí • Không ràng buộc • Tư vấn 1-1
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
