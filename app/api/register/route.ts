@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
-import { insertRegistration } from '@/lib/db';
+import { addRegistration } from '@/lib/firebase';
 import { sendRegistrationNotification } from '@/lib/telegram';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -129,10 +129,10 @@ export async function POST(request: NextRequest) {
 </html>
     `;
 
-    // Save to database
-    let registrationId: number | null = null;
+    // Save to Firestore
+    let registrationId: string | null = null;
     try {
-      registrationId = insertRegistration({
+      registrationId = await addRegistration({
         name,
         email,
         phone: cleanPhone,
@@ -143,9 +143,9 @@ export async function POST(request: NextRequest) {
         ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
         user_agent: request.headers.get('user-agent') || 'unknown',
       });
-      console.log(`✅ Registration saved to database with ID: ${registrationId}`);
+      console.log(`✅ Registration saved to Firestore with ID: ${registrationId}`);
     } catch (dbError) {
-      console.error('❌ Failed to save to database:', dbError);
+      console.error('❌ Failed to save to Firestore:', dbError);
       // Continue even if DB fails
     }
 

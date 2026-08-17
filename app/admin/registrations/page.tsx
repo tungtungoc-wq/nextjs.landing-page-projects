@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Trash2, RefreshCw, Users, Calendar, TrendingUp, Download } from "lucide-react";
 
 interface Registration {
-  id: number;
+  id: string;
   name: string;
   email: string;
   phone: string;
@@ -12,7 +12,7 @@ interface Registration {
   course: string;
   message: string;
   registration_type: string;
-  created_at: string;
+  created_at: string | Date;
 }
 
 interface Stats {
@@ -77,7 +77,7 @@ export default function AdminRegistrations() {
     fetchData(password);
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     if (!confirm('Bạn có chắc muốn xóa đăng ký này?')) return;
 
     try {

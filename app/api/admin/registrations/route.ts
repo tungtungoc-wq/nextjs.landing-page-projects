@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
   getAllRegistrations,
-  getRecentRegistrations,
   getStatistics,
   deleteRegistration,
-} from '@/lib/db';
+} from '@/lib/firebase';
 
 // Simple password protection (in production, use proper auth)
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
@@ -40,16 +39,20 @@ export async function GET(request: NextRequest) {
 
   try {
     if (action === 'stats') {
-      const stats = getStatistics();
+      const stats = await getStatistics();
       return NextResponse.json({ success: true, data: stats });
     }
 
+    const registrations = await getAllRegistrations();
+
     if (limit) {
-      const registrations = getRecentRegistrations(parseInt(limit));
-      return NextResponse.json({ success: true, data: registrations });
+      const limitNum = parseInt(limit);
+      return NextResponse.json({
+        success: true,
+        data: registrations.slice(0, limitNum)
+      });
     }
 
-    const registrations = getAllRegistrations();
     return NextResponse.json({ success: true, data: registrations });
   } catch (error) {
     console.error('Admin API error:', error);
@@ -83,7 +86,7 @@ export async function DELETE(request: NextRequest) {
   }
 
   try {
-    const deleted = deleteRegistration(parseInt(id));
+    const deleted = await deleteRegistration(id);
     if (deleted) {
       return NextResponse.json({
         success: true,
